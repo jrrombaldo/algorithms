@@ -5,7 +5,7 @@ public class MergeSort extends BaseAlgorithm {
     protected static void mergeSort(int[] vect) {
 	int[] aux = new int[vect.length];
 	int lo = 0;
-	int hi = vect.length;
+	int hi = vect.length - 1;
 
 	mergeSort(vect, aux, lo, hi);
     }
@@ -21,14 +21,29 @@ public class MergeSort extends BaseAlgorithm {
     }
 
     protected static void merge(int[] vect, int[] aux, int lo, int mid, int hi) {
-	System.out.println(lo+" "+mid+" "+hi );
+	for (int x = lo; x <= hi; x++)
+	    aux[x] = vect[x];
+
+	int i = lo;
+	int j = mid + 1;
+	for (int k = lo; k <= hi; k++) {
+	    if (i > mid) {
+		vect[k] = aux[j++];
+	    } else if (j > hi) {
+		vect[k] = aux[i++];
+	    } else if (aux[i] <= aux[j]) {
+		vect[k] = aux[i++];
+	    } else {
+		vect[k] = aux[j++];
+	    }
+	}
     }
 
-    
-    public static void main (String[] args){
-	
-	mergeSort(_vect);
-	print(_vect);
+    public static void main(String[] args) {
+	for (int i = 0; i < 30; i++) {
+	    mergeSort(_vect);
+	    print(_vect);
+	}
     }
-    
+
 }
