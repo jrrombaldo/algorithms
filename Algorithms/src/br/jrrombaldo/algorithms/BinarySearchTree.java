@@ -43,9 +43,7 @@ public class BinarySearchTree extends BaseAlgorithm {
     }
 
     public void insert(Node node, Node root) {
-	if (root == null)
-	    root = node;
-	else if (node.value > root.value) {
+	if (node.value > root.value) {
 	    if (root.right != null)
 		insert(node, root.right);
 	    else
@@ -55,7 +53,6 @@ public class BinarySearchTree extends BaseAlgorithm {
 		insert(node, root.left);
 	    else
 		root.left = node;
-
 	}
     }
 
@@ -66,7 +63,6 @@ public class BinarySearchTree extends BaseAlgorithm {
 	list.add(root.value);
 	inOrder(root.right, list);
     }
-    
 
     public static void main(String[] args) {
 	BinarySearchTree tree = new BinarySearchTree();
@@ -82,12 +78,11 @@ public class BinarySearchTree extends BaseAlgorithm {
 	tree.insert(39);
 
 	System.out.println(tree.search(33));
-
-
+	
 	List<Integer> list = new ArrayList<Integer>();
 	tree.inOrder(tree.root, list);
-	for(Integer val : list){
-	    System.out.print(val+" ");
+	for (Integer val : list) {
+	    System.out.print(val + " ");
 	}
     }
 
