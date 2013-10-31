@@ -17,8 +17,8 @@ public class GraphDepthFirstSearch {
 	    comeFrom[i] = -1;
     }
 
-    protected void dfs(int src) {
-	for (int w : graph.adj[src]){
+    public void dfs(int src) {
+	for (int w : graph.adj[src]) {
 	    // not visited
 	    if (comeFrom[w] < 0) {
 		dfs(w);
@@ -27,16 +27,14 @@ public class GraphDepthFirstSearch {
 	}
     }
 
-    public Stack<Integer> serach(int src, int des) {
-	if (comeFrom[des]<0)
-	    return null; //without path
-	
-	path = new Stack<>();
-	
-	for (int v = des; v != src; v=comeFrom[v])
-	    path.add(v);
+    public boolean isTherePath(int dst) {
+	return comeFrom[dst] > 0;
+    }
 
-	return path;
+    public void pathTo(int src, int des) {
+	for (int v = des; v != src; v = comeFrom[v])
+	    System.out.println(path);
+
     }
 
 }
